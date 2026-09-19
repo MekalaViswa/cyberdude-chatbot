@@ -54,7 +54,7 @@ function buildReply(matches) {
   // Keep at most one chunk per source page so the reply covers distinct
   // topics instead of three fragments of the same paragraph.
   const seenUrls = new Set();
-  const distinct = [];
+  const distinct = []; 
   for (const { chunk } of matches) {
     if (seenUrls.has(chunk.url)) continue;
     seenUrls.add(chunk.url);
@@ -122,6 +122,7 @@ app.use(express.json({ limit: "20kb" }));
 //   // })
 // );
 app.use(cors())
+app.use(express.static(path.join(__dirname, "..", "widget")));
 const chatLimiter = rateLimit({
   windowMs: 60 * 1000,
   max: RATE_LIMIT,
