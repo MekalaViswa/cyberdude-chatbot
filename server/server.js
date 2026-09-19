@@ -9,7 +9,8 @@ const { SearchIndex } = require("./search");
 const { isBlocked, matchSmallTalk, DECLINE_REPLY } = require("./guardrails");
 const { matchFAQ } = require("./faq");
 
-const PORT = 3050;
+//const PORT = 3050;
+const PORT = process.env.PORT || 3050;
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
   .split(",")
   .map((o) => o.trim())
